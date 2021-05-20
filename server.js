@@ -9,7 +9,7 @@ const cities = require("./api/cities");
 const errorHandler = require("./middleware/error");
 
 const app = express();
-const PORT = 5000;
+const port = process.env.PORT || 5000;
 
 connectDB();
 
@@ -21,5 +21,5 @@ app.use("/cities", cities);
 app.use(errorHandler);
 
 app.listen(PORT, () =>
-    console.log(`Started server on port ${PORT}`.rainbow.bold.inverse)
+    console.log(`Started server on port ${port}`.rainbow.bold.inverse)
 );

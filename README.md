@@ -1,22 +1,19 @@
-# scrapyard
+# mini-yelp-backend
 
-A simple auth server.
+A simple API for a Yelp-Clone.
 
 ## Setup
 
-This server is expecting a `MONGO_URI` environment variable defined in a `.env` file at root level.
-You can check out the schema for `User` and `Order` collections inside the directory `models`.
-That will help you populate the db with initial data if needed.
+## API-Routes
 
-## Install and run :runner:
+Restaurants:
+'/restaurants': GET all restaurants
+'/restaurants/:id': GET restaurant with id
 
-Unsurprisingly, run 
+Cities:
 
-```sh
-npm i
-npm start
-```
-inside the root directory in order to run.
+Tags:
+
 
 ## Example requests
 

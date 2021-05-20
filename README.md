@@ -8,6 +8,7 @@ A simple API for a Yelp-Clone.
 
 Restaurants:
 '/restaurants': GET all restaurants
+
 '/restaurants/:id': GET restaurant with id
 
 Cities:

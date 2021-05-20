@@ -6,7 +6,7 @@ const { ObjectId } = mongoose.Types;
 
 const getRestaurants = async (req, res, next) => {
     try {
-        const restaurants = await Restaurant.find();
+        const restaurants = await Restaurant.find().populate("city");
         res.json({
             success: true,
             msg: "show all restaurants",

@@ -9,7 +9,7 @@ const RestaurantSchema = new Schema({
         maxlength: [50, "Only max 50 chars are allowed for the name"],
     },
 
-    cityId: {
+    city: {
         type: mongoose.Schema.ObjectId,
         ref: "City",
         required: [true, "Please add a city"],

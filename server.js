@@ -15,6 +15,7 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+app.use("/", (req, res) => res.send("Nothing to find here"));
 app.use("/restaurants", restaurants);
 app.use("/cities", cities);
 app.use(errorHandler);

@@ -8,7 +8,7 @@ const {
 
 const api = express.Router();
 
-api.route("/").get(getRestaurants).put(createRestaurant);
+api.route("/").get(getRestaurants).post(createRestaurant);
 
 api.route("/:id").get(getRestaurant).put(updateRestaurant);
 

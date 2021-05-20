@@ -35,11 +35,11 @@ const createCity = async (req, res, next) => {
     try {
         // insert restaurant
         const { name } = req.body;
-        await City.create({ name });
+        const city = await City.create({ name });
 
         res.json({
             success: true,
-            msg: `city with id ${id} created`,
+            msg: `city with name ${name} created`,
             data: city,
         });
     } catch (err) {

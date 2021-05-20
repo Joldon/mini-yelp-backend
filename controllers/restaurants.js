@@ -33,19 +33,18 @@ const getRestaurant = async (req, res, next) => {
 
 const createRestaurant = async (req, res, next) => {
     try {
-        // insert restaurant
-        const { name, city, tags, image } = req.body;
-        let cityId = City.find({ name: city });
+        const { name, cityId, tags, image } = req.body;
 
-        if (!cityId) {
-            const newCity = await City.create({ name: city });
-            cityId = newCity.id;
-        }
-        await Restaurant.create({ name, cityId, tags, image });
+        const restaurant = await Restaurant.create({
+            name,
+            cityId,
+            tags,
+            image,
+        });
 
         res.json({
             success: true,
-            msg: `restaurant with id ${id} created`,
+            msg: `restaurant with name ${name} created`,
             data: restaurant,
         });
     } catch (err) {

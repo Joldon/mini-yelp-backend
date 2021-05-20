@@ -8,6 +8,7 @@ const RestaurantSchema = new Schema({
         required: [true, "Please add a name"],
         maxlength: [50, "Only max 50 chars are allowed for the name"],
     },
+
     cityId: {
         type: mongoose.Schema.ObjectId,
         ref: "City",
@@ -17,8 +18,12 @@ const RestaurantSchema = new Schema({
         type: String,
         required: false,
     },
-    tags: {
-        type: Array,
+    description: {
+        type: String,
+        required: false,
+    },
+    cuisine: {
+        type: String,
         required: false,
     },
 });

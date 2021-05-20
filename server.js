@@ -20,6 +20,6 @@ app.use("/restaurants", restaurants);
 app.use("/cities", cities);
 app.use(errorHandler);
 
-app.listen(PORT, () =>
+app.listen(port, () =>
     console.log(`Started server on port ${port}`.rainbow.bold.inverse)
 );

@@ -56,11 +56,11 @@ const createRestaurant = async (req, res, next) => {
 const updateRestaurant = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { name, cityId, image, description, cuisine } = req.body;
+        const { name, city, image, description, cuisine } = req.body;
 
         const restaurant = await Restaurant.findByIdAndUpdate(
             id,
-            { name, cityId, image, description, cuisine },
+            { name, city, image, description, cuisine },
             { new: true }
         );
         res.json({

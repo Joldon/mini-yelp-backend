@@ -16,11 +16,11 @@ const getRestaurants = async (req, res, next) => {
         next(err);
     }
 };
-
+//https://github.com/Joldon/mini-yelp-backend/commit/86b8afd05b2c0bd8f2bc37384c92c88f4a6f1980
 const getRestaurant = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const restaurant = await Restaurant.findById(id);
+        const restaurant = await Restaurant.findById(id).populate("city");
         res.json({
             success: true,
             msg: "show selected restaurants",
@@ -33,11 +33,11 @@ const getRestaurant = async (req, res, next) => {
 
 const createRestaurant = async (req, res, next) => {
     try {
-        const { name, cityId, image, description, cuisine } = req.body;
+        const { name, city, image, description, cuisine } = req.body;
 
         const restaurant = await Restaurant.create({
             name,
-            cityId,
+            city,
             image,
             description,
             cuisine,

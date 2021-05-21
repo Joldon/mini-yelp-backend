@@ -6,7 +6,9 @@ const { ObjectId } = mongoose.Types;
 
 const getRestaurants = async (req, res, next) => {
     try {
-        const restaurants = await Restaurant.find().populate("city");
+        const restaurants = await Restaurant.find()
+            .populate("city")
+            .populate("tags");
         res.json({
             success: true,
             msg: "show all restaurants",
@@ -16,11 +18,13 @@ const getRestaurants = async (req, res, next) => {
         next(err);
     }
 };
-//https://github.com/Joldon/mini-yelp-backend/commit/86b8afd05b2c0bd8f2bc37384c92c88f4a6f1980
+
 const getRestaurant = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const restaurant = await Restaurant.findById(id).populate("city");
+        const restaurant = await Restaurant.findById(id)
+            .populate("city")
+            .populate("tags");
         res.json({
             success: true,
             msg: "show selected restaurants",
@@ -33,7 +37,7 @@ const getRestaurant = async (req, res, next) => {
 
 const createRestaurant = async (req, res, next) => {
     try {
-        const { name, city, image, description, cuisine } = req.body;
+        const { name, city, image, description, cuisine, tags } = req.body;
 
         const restaurant = await Restaurant.create({
             name,
@@ -41,6 +45,7 @@ const createRestaurant = async (req, res, next) => {
             image,
             description,
             cuisine,
+            tags,
         });
 
         res.json({
@@ -56,11 +61,11 @@ const createRestaurant = async (req, res, next) => {
 const updateRestaurant = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { name, city, image, description, cuisine } = req.body;
+        const { name, city, image, description, cuisine, tags } = req.body;
 
         const restaurant = await Restaurant.findByIdAndUpdate(
             id,
-            { name, city, image, description, cuisine },
+            { name, city, image, description, cuisine, tags },
             { new: true }
         );
         res.json({

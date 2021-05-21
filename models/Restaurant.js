@@ -8,7 +8,7 @@ const RestaurantSchema = new Schema({
         required: [true, "Please add a name"],
         maxlength: [50, "Only max 50 chars are allowed for the name"],
     },
-
+    //  names of itmes must be exactly the same as fields in MngoDB
     city: {
         type: mongoose.Schema.ObjectId,
         ref: "City",
@@ -25,6 +25,10 @@ const RestaurantSchema = new Schema({
     cuisine: {
         type: String,
         required: false,
+    },
+    tags: {
+        type: [mongoose.Schema.ObjectId],
+        ref: "Tag",
     },
 });
 
